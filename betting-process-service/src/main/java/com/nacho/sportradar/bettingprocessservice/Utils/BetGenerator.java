@@ -29,12 +29,6 @@ public class BetGenerator implements CommandLineRunner {
     public void run(String... args) throws Exception {
         final List<Bet> bets = generateRandomBets(100);
         bets.forEach(actualBet -> bettingQueueService.enqueueBet(actualBet));
-
-//        final Bet bet1 = new Bet(459, 100.00, 1.5, "2355", "Football Match - Team A vs Team B", "Match Result", "Team A Win", BetStatus.OPEN);
-//        final Bet bet2 = new Bet(459,50.00,2.0,"2355","Basketball Game - Team C vs Team D","Match Result","Team C Win", BetStatus.LOSER);
-//        bettingQueueService.enqueueBet(bet1);
-//        Thread.sleep(2000);
-//        bettingQueueService.enqueueBet(bet2);
     }
 
     public static List<Bet> generateRandomBets(int n) {
