@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: betting-process-service
+  # Datasource postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 5234
+
+# Embebbed server config
+server:
+  port: 8080
+  servlet:
+    context-path: /betting-process-service
+
+# Redis config
+redis:
+  host: localhost
+  port: 6379

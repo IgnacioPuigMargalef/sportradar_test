@@ -1,0 +1,35 @@
+services:
+  # POSTGRES DATABASE
+  postgres:
+    container_name: betting-postgres-db
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 5234
+      PGDATA: /data/postgres
+    volumes:
+      - ./postgres:/data/postgres
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  # REDIS IN-MEMORY DATABASE
+  redis:
+    container_name: betting-redis-db
+    image: redis/redis-stack:latest
+    environment:
+      - REDIS_PASSWORD=5234
+    volumes:
+      - ./redis_data:/data
+    ports: 
+      # Database
+      - "6379:6379"
+      # Client redis insight
+      - "8099:8001"
+
+networks:
+  postgres:
+    driver: bridge
